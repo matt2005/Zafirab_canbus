@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# https://files.lwpm.eu/LWPMComfortModule/lcm_service/vcan_init
+
+sudo modprobe ftdi_sio
+sudo echo 0403 4f50 >> /sys/bus/usb-serial/drivers/ftdi_sio/new_id
+
+sudo modprobe vcan
+
+sudo ip link add dev lscan type vcan
+sudo ip link set lscan up
+
+sudo ip link add dev mscan type vcan
+sudo ip link set mscan up
+
+sudo ip link add dev hscan type vcan
+sudo ip link set hscan up
+
+sudo ip link add dev chcan type vcan
+sudo ip link set chcan up
+
+sudo ip link add dev gmlan type vcan
+sudo ip link set gmlan up
